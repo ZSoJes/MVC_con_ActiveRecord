@@ -11,8 +11,8 @@ class TasksController
     @view.index(@task.index)
   end
 
-  def add(var1, var2, var3)
-    @view.create(@task.add(var1, var2, var3))
+  def add(var1, var2)
+    @view.create(@task.add(var1, var2 ))
   end
 
   def delete(var1)
@@ -28,14 +28,15 @@ class TasksController
       index
 
     elsif @args[0] == 'add'
-      add( @args[1], @args[2], @args[3] )
+      add( @args[1], @args[2])
 
     elsif @args[0] == 'delete'
       delete( @args[1] )
 
     elsif @args[0] == 'complete'
       complete( @args[1] )
-
+    else
+      @view.error
     end
   end
 

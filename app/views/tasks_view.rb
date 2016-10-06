@@ -13,6 +13,7 @@ class TasksView
     puts
     puts "////////Soy una barra espaciadora////////".chars.join("  ")
     puts "Datos agregados!"
+    p dato
     puts
   end
 
@@ -20,6 +21,7 @@ class TasksView
     puts
     puts "////////Soy una barra espaciadora////////".chars.join("  ")
     puts "Se ha completado la eliminacion de los datos"
+    p dato
     puts
   end
 
@@ -27,6 +29,7 @@ class TasksView
     puts
     puts "////////Soy una barra espaciadora////////".chars.join("  ")
     puts "Se ha completado la tarea exitosamente"
+    p dato
     puts
   end
 

@@ -1,17 +1,7 @@
 # Este archivo sirve para crear registros de prueba
-module TaskSeeds
-  def self.import(filename=File.dirname(__FILE__) + "/../task.csv")
-    field_names = nil
-    Task.transaction do
-      File.open(filename).each do |line|
-        data = line.chomp.split(',')
-        if field_names.nil?
-          field_names = data
-        else
-          attribute_hash = Hash[field_names.zip(data)]
-          user = Task.create!(attribute_hash)
-        end
-      end
-    end
+require 'csv'
+CSV.foreach("task.csv") do |row|
+  if row[0] != nil and row[1] != nil
+    Task.new.add(row[0], row[1])
   end
 end

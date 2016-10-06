@@ -8,11 +8,11 @@ class Task < ActiveRecord::Base
     Task.all
   end
 
-  def add( var1, var2, var3 )
+  def add( var1, var2 )
   	task = Task.new do |t|
       t.name = var1
       t.category = var2
-      t.state = var3
+      t.state = "no_completado"
     end
     task.save
   end
@@ -25,7 +25,7 @@ class Task < ActiveRecord::Base
   def complete( val1 )
   	task = Task.find_by(id: val1)
     task.state = "completado"
-    task.updated_at = Time.now
+    task.updated_at = Time.now.strftime("%Y-%m-%d")
     task.save
   end
 
