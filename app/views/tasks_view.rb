@@ -35,6 +35,7 @@ class TasksView
 
 	def error
     puts "Error en los datos"
-    puts "se recomienda verifique los datos introducidos"
+    puts "se recomienda verifique los datos introducidos o comandos"
+    print "\nLista de comandos\n\nindex\nadd <nombre tarea> <categoria tarea>\ncomplete <valor id>\ndelete <valor id>\n\n"
 	end
 end
