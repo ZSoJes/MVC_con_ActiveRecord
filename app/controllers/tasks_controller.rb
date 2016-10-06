@@ -1,18 +1,45 @@
+#require_relative 'task'
+#require_relative 'task_view'
+
 class TasksController
   def initialize(args)
+    @args = args
+    @task = Task.new
     @view = TasksView.new
+    execute
   end
 
   def index
     # TIP: Aquí debes de llamar al método del mismo nombre de @view
+    @view.index(@task.index)
   end
 
-  def add
+  def add(var1, var2, var3)
+    @view.create(@task.add(var1, var2, var3))
   end
 
-  def delete
+  def delete(var1)
+    @view.delete(@task.delete(var1))
   end
 
-  def complete
+  def complete(val1)
+    @view.update(@task.complete(val1))
   end
+
+  def execute
+    if @args[0] == 'index'
+      index
+
+    elsif @args[0] == 'add'
+      add( @args[1], @args[2], @args[3] )
+
+    elsif @args[0] == 'delete'
+      delete( @args[1] )
+
+    elsif @args[0] == 'complete'
+      complete( @args[1] )
+
+    end
+  end
+
 end
