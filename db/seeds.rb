@@ -1,9 +1,17 @@
 # Este archivo sirve para crear registros de prueba
-require 'date'
-@task = Task.create({
-	:name => "leer_libro",
-	:category => "lectura",
-	:state => "no_terminado",
-	:created_at => Time.now,
-	:updated_at => Time.now
-	})
+module TaskSeeds
+  def self.import(filename=File.dirname(__FILE__) + "/../task.csv")
+    field_names = nil
+    Task.transaction do
+      File.open(filename).each do |line|
+        data = line.chomp.split(',')
+        if field_names.nil?
+          field_names = data
+        else
+          attribute_hash = Hash[field_names.zip(data)]
+          user = Task.create!(attribute_hash)
+        end
+      end
+    end
+  end
+end

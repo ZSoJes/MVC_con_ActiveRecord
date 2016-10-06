@@ -10,7 +10,7 @@ class Task < ActiveRecord::Base
 
   def add( var1, var2, var3 )
   	task = Task.new do |t|
-      t.name = var2
+      t.name = var1
       t.category = var2
       t.state = var3
     end

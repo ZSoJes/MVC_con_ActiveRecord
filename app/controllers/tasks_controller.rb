@@ -1,6 +1,3 @@
-#require_relative 'task'
-#require_relative 'task_view'
-
 class TasksController
   def initialize(args)
     @args = args
